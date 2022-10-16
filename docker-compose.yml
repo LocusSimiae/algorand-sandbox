@@ -17,13 +17,13 @@ services:
         NETWORK_NUM_ROUNDS: "${NETWORK_NUM_ROUNDS:-30000}"
         NODE_ARCHIVAL: "${NODE_ARCHIVAL}"
         TOKEN: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        ALGOD_PORT: "4001"
-        KMD_PORT: "4002"
-        CDT_PORT: "9392"
+        ALGOD_PORT: "4003"
+        KMD_PORT: "4004"
+        CDT_PORT: "9393"
     ports:
-      - ${ALGOD_PORT:-4001}:4001
-      - ${KMD_PORT:-4002}:4002
-      - ${CDT_PORT:-9392}:9392
+      - ${ALGOD_PORT:-4003}:4003
+      - ${KMD_PORT:-4004}:4004
+      - ${CDT_PORT:-9393}:9393
 
   indexer:
     container_name: "${INDEXER_CONTAINER:-algorand-sandbox-indexer-release}"
@@ -35,14 +35,14 @@ services:
         BRANCH: "${INDEXER_BRANCH}"
         SHA: "${INDEXER_SHA}"
     ports:
-      - ${INDEXER_PORT:-8980}:8980
+      - ${INDEXER_PORT:-8981}:8981
     restart: unless-stopped
     environment:
       DISABLED: "${INDEXER_DISABLED}"
-      PORT: "8980"
+      PORT: "8981"
       SNAPSHOT: ""
-      CONNECTION_STRING: "host=indexer-db port=5432 user=algorand password=algorand dbname=indexer_db sslmode=disable"
-      ALGOD_ADDR: "algod:4001"
+      CONNECTION_STRING: "host=indexer-db port=5434 user=algorand password=algorand dbname=indexer_db sslmode=disable"
+      ALGOD_ADDR: "algod:4003"
       ALGOD_TOKEN: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       INDEXER_ENABLE_ALL_PARAMETERS: "${INDEXER_ENABLE_ALL_PARAMETERS:-false}"
     depends_on:
@@ -53,7 +53,7 @@ services:
     image: "postgres:13-alpine"
     container_name: "${POSTGRES_CONTAINER:-algorand-sandbox-postgres-release}"
     ports:
-      - ${POSTGRES_PORT:-5433}:5432
+      - ${POSTGRES_PORT:-5434}:5434
     user: postgres
     environment:
       POSTGRES_USER: algorand

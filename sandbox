@@ -12,9 +12,9 @@ ACTIVE_CONFIG_FILE="$SANDBOX_DIR/.active_config"
 SANDBOX_LOG="$SANDBOX_DIR/sandbox.log"
 FAST_CATCHUP_URL='https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/CHANNEL/latest.catchpoint'
 
-APORT="${ALGOD_PORT:-4001}"
-KPORT="${KMD_PORT:-4002}"
-IPORT="${INDEXER_PORT:-8980}"
+APORT="${ALGOD_PORT:-4003}"
+KPORT="${KMD_PORT:-4004}"
+IPORT="${INDEXER_PORT:-8981}"
 
 # Global flags
 USE_FAST_CATCHUP=1

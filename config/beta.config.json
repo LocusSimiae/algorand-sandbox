@@ -1,4 +1,4 @@
 {
-  "EndpointAddress": ":4001",
+  "EndpointAddress": ":4003",
   "DNSBootstrapID": "<network>.algodev.network"
 }
