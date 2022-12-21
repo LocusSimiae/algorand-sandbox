@@ -103,7 +103,7 @@ function overwrite() {
 
 # Yes/no prompt around the clean command
 function ask_clean () {
-  if ask "$1"; then
+  if ask "$1" "Y"; then
     sandbox clean
   else
     exit 1
@@ -418,8 +418,8 @@ sandbox () {
         return
         ;;
       indexer-db)
-        statusline "Entering /bin/bash session in the indexer-db container..."
-        dc_pty exec indexer-db //bin/bash
+        statusline "Entering psql session in the indexer-db container..."
+        dc_pty exec indexer-db psql -U algorand -d indexer_db
         return
         ;;
     esac
